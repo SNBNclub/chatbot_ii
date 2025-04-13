@@ -6,7 +6,8 @@ import sys
 from aiogram.client.bot import DefaultBotProperties
 import logging
 import asyncio
-from pyrogram import Client
+
+from gigachat import GigaChat
 
 """
 Эту часть можно вырезать
@@ -41,3 +42,7 @@ logging.basicConfig(
 
 
 logger = logging.getLogger(__name__)
+
+
+token_gigachat = os.getenv('TOKEN_GIGA_CHAT')
+GC = GigaChat(credentials=token_gigachat, verify_ssl_certs=False)

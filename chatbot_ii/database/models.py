@@ -22,6 +22,21 @@ class User(Base):
     is_superuser = Column(Boolean, default=False)
 
 
+class CurDialog(Base):
+    __tablename__ = 'cur_dialog'
+
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
+    user_id = Column(BigInteger, ForeignKey('user.id'))
+    dialog_id = Column(Integer, ForeignKey('dialog.id'))
+
+
+class Dialog(Base):
+    __tablename__ = 'dialog'
+
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
+    dialog = Column(String, default='')
+
+
 async def async_main():
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
