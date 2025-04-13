@@ -1,0 +1,1 @@
+# write here your sql queries to init psql env
